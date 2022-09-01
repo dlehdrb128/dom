@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div id="root" onclick="alert('you clicked the header')"></div>
+    <script type="module">
+      const root = document.getElementById("root");
+
+      root.style.width = "100px";
+      root.style.height = "100px";
+      root.style.backgroundColor = "aquamarine";
+
+      function tagCreate(tagName, textNode, count, parent) {
+        let dom = [];
+
+        let [first, secound] = parent.split(",");
+        dom.unshift(first);
+
+        for (let i = 0; i < count; i++) {
+          dom.push(`<${tagName}>${textNode[i]}</${tagName}>`);
+        }
+
+        dom.push(secound);
+
+        return dom;
+      }
+
+      let tag = tagCreate(
+        "li",
+        ["자운", "난", "하염", "없이"],
+        4,
+        "<ul><div></div></ul>"
+      );
+
+      console.log(tag);
+
+      root.innerHTML = tag.join("");
+    </script>
+    <script src="./algo-15.js"></script>
+  </body>
+</html>
